@@ -6,28 +6,42 @@
     <title>Document</title>
   </head>
   <body>
-    <div>响应式原理</div>
-    <div class="app"></div>
-    <div>
-      <button onclick="sum()">点我</button>
-    </div>
-    <script src="./index.js"></script>
+    <div class="app">app</div>
+    <input class="inp" type="heihei" value="foo" />
     <script>
-      let obj = reactive({ name: "why" });
-      const dom = document.querySelector(".app");
-      effect(() => {
-        dom.textContent = obj.name;
-        // console.log("obj:>>", obj, obj.name);
-      });
+        //    const dom = document.querySelector(".app")
+        //    console.log(dom.el,'dom');
+        //   const text = document.createTextNode('100')
+        //    dom.insertBefore(text,null)
+        //    dom.onclick = (e) => {
+        //     console.log(e.timeStamp,'and', dom.onclick.a);
+        //    }
+        //    dom.onclick.a = performance.now()
 
-      const sum = () => {
-        obj.name = "hehe";
-      };
-      console.log("effect::>", obj);
+        // const app = document.querySelector(".app")
+        // const inp = document.querySelector(".inp")
+        // console.log( inp.getAttribute('value'))
+        // console.log(inp.value);
+        // console.log(inp.defaultValue);
+        // console.log(inp.type,'type');
+        // app.onclick= () => {
+        //   console.log( inp.getAttribute('value'))
+        //   console.log(inp.value);
+        //   console.log(inp.defaultValue);
+        // }
+        // const dom = document.createElement('div')
+        // dom.className = 'zhang'
+        // dom.textContent = '张三'
+        // const body = document.body
+        // body.insertBefore(dom,app.nextSibling)
 
-      setTimeout(() => {
-        obj.name = "kobe";
-      }, 1000);
+      let obj = {
+        a:1,b:2
+      }
+
+      let obj2 ={}
+      Reflect.set(obj,'b',1000,obj2)
+      console.log(obj,obj2);
     </script>
   </body>
 </html>

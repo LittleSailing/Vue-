@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script src="./06_reactive.js"></script>
+
+    <!-- <script src="./07_polluteOriginal_proxy.js"></script> -->
+
+    <!-- <script>
+
+      const arr = [1,2,3,4,5]
+      const map =new Set([
+        1,100
+      ])
+      console.log(map[Symbol.iterator] === map.entries);
+
+      let obj  = {
+        foo:1,
+        bar:2,
+      }
+      Object.defineProperty(obj,'entries',{
+        value(){
+            const itr = Object.keys(this)[Symbol.iterator]()
+            return {
+              next(){
+                const {value,done} = itr.next()
+                return{
+                  value:value? value:value,
+                  done
+                }
+              },
+              [Symbol.iterator]() {
+                return this
+              }
+          }
+
+        },
+      })
+      for (const iterator of obj.entries()) {
+        console.log(obj[iterator],'itr1');
+      }
+    </script> -->
+  </body>
+</html>

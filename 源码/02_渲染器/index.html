@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <p class="p1">你好</p>
+      <p class="p2">你好2</p>
+    </div>
+    <script src="https://unpkg.com/@vue/reactivity@3.0.5/dist/reactivity.global.js"></script>
+    <!-- <script src="./01_render.js"></script> -->
+
+    <script>
+      // const dom =  document.querySelector('#app')
+      // const p = document.querySelector('.p1')
+      // const p2 = document.querySelector('.p2')
+      // let next = p
+      // const createdom = document.createElement('div')
+      // createdom.textContent = '创建一个dom'
+      // dom.insertBefore(createdom,p)
+
+
+      function emit(event, ...payload) {
+        // 约定事件处理名称
+        const eventName = `on${event[0].toLowerCase() + event.slice(1)}`
+        console.log(eventName,event[0],'--',event.slice(1));
+      }
+
+        emit('change',6,9,8)
+
+      // dom.insertBefore(p.nextSibling)
+    </script>
+  </body>
+</html>
