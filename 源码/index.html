@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>响应式原理</div>
+    <div class="app"></div>
+    <div>
+      <button onclick="sum()">点我</button>
+    </div>
+    <script src="./index.js"></script>
+    <script>
+      let obj = reactive({ name: "why" });
+      const dom = document.querySelector(".app");
+      effect(() => {
+        dom.textContent = obj.name;
+        // console.log("obj:>>", obj, obj.name);
+      });
+
+      const sum = () => {
+        obj.name = "hehe";
+      };
+      console.log("effect::>", obj);
+
+      setTimeout(() => {
+        obj.name = "kobe";
+      }, 1000);
+    </script>
+  </body>
+</html>
