@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        font-size: 2vmin;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        background-color: #000;
+        overflow: hidden;
+      }
+
+      .container {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+      .faullttext {
+        color: #fff;
+        position: absolute;
+        font-size: 5rem;
+        font-weight: 700;
+        font-family: Impact, sans-serif;
+        letter-spacing: 0.5rem;
+        user-select: none;
+      }
+      .faullttext_fault::before,
+      .faullttext_fault::after {
+        content: "CONTEXT";
+        position: absolute;
+        left: 0;
+        top: 0;
+        mix-blend-mode: screen;
+      }
+      .faullttext_fault::after {
+        color: #ff0000;
+        transform: translateX(2%);
+        /* font-family: 'Courier New', Courier, monospace; */
+      }
+      .faullttext_fault::before {
+        color: #0000ff;
+        transform: translateX(-2%);
+        /* font-family: 'Courier New', Courier, monospace; */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" onclick="faullttext.fault()">
+      <p class="faullttext">CONTEXT</p>
+      <p class="faullttext">CONTEXT</p>
+      <p class="faullttext">CONTEXT</p>
+      <p class="faullttext">CONTEXT</p>
+      <p class="faullttext">CONTEXT</p>
+    </div>
+    <script>
+      const faullttext = {
+        player: {},
+        texts: [],
+        init() {
+          this.texts = [...document.querySelectorAll(".faullttext")];
+        },
+        fault() {
+          clearInterval(this.player);
+
+          setTimeout(() => {
+            clearInterval(this.player);
+            this.texts.forEach((text) => {
+              text.classList.remove("faullttext_fault");
+              text.style.transform = "";
+              text.style.clipPath = "";
+            });
+          }, 3000);
+          this.player = setInterval(() => {
+            this.texts.forEach((text) => {
+              text.classList.add("faullttext_fault");
+              text.style.transform = `translate(${Math.random() * 10 - 10}%,${
+                Math.random() * 10 - 10
+              }%)`;
+              let x = Math.random() * 100;
+              let y = Math.random() * 100;
+              let h = Math.random() * 50 + 50;
+              let w = Math.random() * 70 + 10;
+              text.style.clipPath = `polygon(${x}% ${y}%,${x + w}% ${y}%,${
+                x + w
+              }% ${y + h}%,${x}% ${y + h}%)`;
+            });
+          }, 30);
+        },
+      };
+      console.log(Math.random() * 10);
+
+      faullttext.init();
+    </script>
+  </body>
+</html>
